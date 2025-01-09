@@ -24,9 +24,16 @@ app.use(
 //טעינת מחרוזת ההתחברות מתוך משתנה הסביבה
 const uri = process.env.MONGO_CONN_STR;
 mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    tlsAllowInvalidCertificates: true,
+  })
   .then(() => {
-    console.log("mongo db connected");
+    console.log("MongoDB connected");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err.message);
   });
 
 // Configurer le dossier public pour servir les fichiers statiques

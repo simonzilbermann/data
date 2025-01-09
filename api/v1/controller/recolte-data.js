@@ -3,6 +3,7 @@ const requestIp = require("request-ip");
 const useragent = require("useragent");
 const IPS = require("../model/recolte-data");
 const mongoose = require("mongoose");
+const axios = require("axios");
 
 module.exports = {
  save_data: async (req, res) => {
